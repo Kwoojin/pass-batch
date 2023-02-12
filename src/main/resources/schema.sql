@@ -4,6 +4,15 @@
  그 외 varchar(50)
  */
 
+DROP TABLE IF EXISTS `package` CASCADE;
+DROP TABLE IF EXISTS `pass` CASCADE;
+DROP TABLE IF EXISTS `bulk_pass` CASCADE;
+DROP TABLE IF EXISTS `booking` CASCADE;
+DROP TABLE IF EXISTS `user` CASCADE;
+DROP TABLE IF EXISTS `user_group_mapping` CASCADE;
+DROP TABLE IF EXISTS `notification` CASCADE;
+DROP TABLE IF EXISTS `statistics` CASCADE;
+
 CREATE TABLE `package`
 (
     `package_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '패키지 순번',
