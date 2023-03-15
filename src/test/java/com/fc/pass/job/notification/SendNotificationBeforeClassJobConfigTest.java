@@ -77,6 +77,23 @@ public class SendNotificationBeforeClassJobConfigTest {
         userEntity.setMeta(Map.of("uuid", "abcd1234"));
         userRepository.save(userEntity);
 
+        PassEntity passEntity = new PassEntity();
+        passEntity.setPackageSeq(1);
+        passEntity.setUserId(userId);
+        passEntity.setStatus(PassStatus.PROGRESSED);
+        passEntity.setRemainingCount(10);
+        passEntity.setStartedAt(now.minusDays(60));
+        passEntity.setEndedAt(now.minusDays(1));
+        passRepository.save(passEntity);
+
+        BookingEntity bookingEntity = new BookingEntity();
+        bookingEntity.setPassSeq(passEntity.getPassSeq());
+        bookingEntity.setUserId(userId);
+        bookingEntity.setStatus(BookingStatus.READY);
+        bookingEntity.setStartedAt(now.plusMinutes(10));
+        bookingEntity.setEndedAt(bookingEntity.getStartedAt().plusMinutes(50));
+        bookingRepository.save(bookingEntity);
+
     }
 
 }
