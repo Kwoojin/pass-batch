@@ -22,5 +22,15 @@ public class PassModelMapperTest {
         bulkPassEntity.setStartedAt(now.minusDays(60));
         bulkPassEntity.setEndedAt(now);
 
+        // when
+        final PassEntity passEntity = PassModelMapper.INSTANCE.toPassEntity(bulkPassEntity, userId);
+
+        // then
+        assertEquals(1, passEntity.getPackageSeq());
+        assertEquals(PassStatus.READY, passEntity.getStatus());
+        assertEquals(10, passEntity.getRemainingCount());
+        assertEquals(now.minusDays(60), passEntity.getStartedAt());
+        assertEquals(now, passEntity.getEndedAt());
+
     }
 }
