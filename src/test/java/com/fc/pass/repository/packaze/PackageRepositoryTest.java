@@ -24,6 +24,11 @@ class PackageRepositoryTest {
         packageEntity.setPackageName("바디 챌린지 PT 12주");
         packageEntity.setPeriod(84);
 
+        // when
+        packageRepository.save(packageEntity);
+
+        // then
+        assertThat(packageEntity.getPackageSeq()).isNotNull();
 
     }
 
