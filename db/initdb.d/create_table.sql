@@ -44,3 +44,19 @@ CREATE TABLE `bulk_pass`
     PRIMARY KEY (`bulk_pass_seq`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='대량 이용권, 다수의 이용자에게 이용권을 지급하기 위함';
 
+CREATE TABLE `booking`
+(
+    `booking_seq`  int         NOT NULL AUTO_INCREMENT COMMENT '예약 순번',
+    `pass_seq`     int         NOT NULL COMMENT '이용권 순번',
+    `user_id`      varchar(20) NOT NULL COMMENT '사용자 ID',
+    `status`       varchar(10) NOT NULL COMMENT '상태',
+    `used_pass`    tinyint(1) NOT NULL DEFAULT '0' COMMENT '이용권 사용 여부',
+    `attended`     tinyint(1) NOT NULL DEFAULT '0' COMMENT '출석 여부',
+    `started_at`   timestamp   NOT NULL COMMENT '시작 일시',
+    `ended_at`     timestamp   NOT NULL COMMENT '종료 일시',
+    `cancelled_at` timestamp            DEFAULT NULL COMMENT '취소 일시',
+    `created_at`   timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    `modified_at`  timestamp            DEFAULT NULL COMMENT '수정 일시',
+    PRIMARY KEY (`booking_seq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='예약';
+
